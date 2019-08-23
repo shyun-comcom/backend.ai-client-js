@@ -306,49 +306,16 @@ class Client {
    * @param {string} sessionId - user-defined session ID
    * @param {object} resources - Per-session resource
    */
-  createIfNotExists(kernelType, sessionId, resources = {}) {
-    if (sessionId === undefined)
-      sessionId = this.generateSessionId();
+  createIfNotExists(image, sessionId, config, tag = "") {
     let params = {
-      "lang": kernelType,
+      "image": image,
       "clientSessionToken": sessionId,
+      "config": config,
     };
-    if (resources != {}) {
-      let config = {};
-      if (resources['cpu']) {
-        config['cpu'] = resources['cpu'];
-      }
-      if (resources['mem']) {
-        config['mem'] = resources['mem'];
-      }
-      if (resources['gpu']) { // Temporary fix for resource handling
-        config['cuda.device'] = parseFloat(parseFloat(resources['gpu'])).toFixed(2);
-      }
-      if (resources['vgpu']) { // Temporary fix for resource handling
-        config['cuda.shares'] = parseFloat(parseFloat(resources['vgpu'])).toFixed(2);
-      }
-      if (resources['tpu']) {
-        config['tpu.device'] = resources['tpu'];
-      }
-      if (resources['env']) {
-        config['environ'] = resources['env'];
-      }
-      if (resources['clustersize']) {
-        config['clusterSize'] = resources['clustersize'];
-      }
-      if (resources['group_name']) {
-        params['group_name'] = resources['group_name'];
-      }
-      if (resources['domain']) {
-        params['domain'] = resources['domain'];
-      }
-      //params['config'] = {};
-      params['config'] = {resources: config};
-      if (resources['mounts']) {
-        params['config'].mounts = resources['mounts'];
-      }
+    if (tag) {
+      params['tag'] = tag;
     }
-    let rqst = this.newSignedRequest('POST', `${this.kernelPrefix}/create`, params);
+    let rqst = this.newSignedRequest('POST', `${this.kernelPrefix}`, params);
     return this._wrapWithPromise(rqst);
   }
 

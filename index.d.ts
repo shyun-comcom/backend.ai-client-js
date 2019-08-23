@@ -39,7 +39,7 @@ declare module 'backend.ai-client' {
     public _wrapWithPromise(rqst: any): any;
     public getServerVersion(): any;
 
-    createIfNotExists(kernelType: string, sessionId: string): any;
+    createIfNotExists(image: string, sessionId: string, config: any, tag: string): any;
     destroy(sessionId: string): any;
     restart(sessionId: string): any;
     execute(sessionId: string, runId: string, mode: string, code: string, opts: string): any;

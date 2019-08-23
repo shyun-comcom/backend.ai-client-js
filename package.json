@@ -26,9 +26,11 @@
   },
   "homepage": "https://github.com/lablup/backend.ai-client-js",
   "dependencies": {
+    "form-data": "^2.5.0",
     "node-fetch": "^1.6.3"
   },
   "devDependencies": {
+    "form-data": "^2.5.0",
     "node-fetch": "^1.6.3"
   }
 }

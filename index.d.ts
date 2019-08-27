@@ -57,6 +57,12 @@ declare module 'backend.ai-client' {
     getSignKey(secret_key: string, now: Date): string;
     generateSessionId(): string;
   }
+
+  export class ComputeSession {
+    constructor(config: ClientConfig);
+
+    list(fields: any, status: any, accessKey: string): any;
+  }
   
   export type backend = {
     Client: Client,

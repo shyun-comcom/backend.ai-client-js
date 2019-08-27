@@ -59,7 +59,7 @@ declare module 'backend.ai-client' {
   }
 
   export class ComputeSession {
-    constructor(config: ClientConfig);
+    constructor(client: Client);
 
     list(fields: any, status: any, accessKey: string): any;
   }

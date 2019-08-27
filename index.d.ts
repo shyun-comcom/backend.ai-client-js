@@ -66,9 +66,11 @@ declare module 'backend.ai-client' {
   
   export type backend = {
     Client: Client,
-    ClientConfig: ClientConfig
+    ClientConfig: ClientConfig,
+    ComputeSession: ComputeSession
   };
 
   export type BackendAIClient = Client;
   export type BackendAIClientConfig = ClientConfig;
+  export type BackendAIComputeSession = ComputeSession;
 }

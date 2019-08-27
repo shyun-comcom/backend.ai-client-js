@@ -1833,6 +1833,7 @@ Object.defineProperty(Client, 'ERR_REQUEST', {
 const backend = {
   Client: Client,
   ClientConfig: ClientConfig,
+  ComputeSession: ComputeSession
 };
 
 // for use like "ai.backend.Client"
@@ -1840,6 +1841,8 @@ module.exports.backend = backend;
 // for classical uses
 module.exports.Client = Client;
 module.exports.ClientConfig = ClientConfig;
+module.exports.ComputeSession = ComputeSession;
 // legacy aliases
 module.exports.BackendAIClient = Client;
 module.exports.BackendAIClientConfig = ClientConfig;
+module.exports.BackendAIComputeSession = ComputeSession;

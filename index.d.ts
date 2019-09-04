@@ -34,6 +34,8 @@ declare module 'backend.ai-client' {
     public static ERR_RESPONSE: ClientErrorType;
     public static ERR_REQUEST: ClientErrorType;
 
+    computeSession: ComputeSession;
+
     constructor(config: ClientConfig, agentSignature?: string);
   
     public _wrapWithPromise(rqst: any): any;
@@ -67,10 +69,8 @@ declare module 'backend.ai-client' {
   export type backend = {
     Client: Client,
     ClientConfig: ClientConfig,
-    ComputeSession: ComputeSession
   };
 
   export type BackendAIClient = Client;
   export type BackendAIClientConfig = ClientConfig;
-  export type BackendAIComputeSession = ComputeSession;
 }

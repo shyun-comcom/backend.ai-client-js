@@ -35,6 +35,7 @@ declare module 'backend.ai-client' {
     public static ERR_REQUEST: ClientErrorType;
 
     computeSession: ComputeSession;
+    image: Image;
 
     constructor(config: ClientConfig, agentSignature?: string);
   
@@ -64,6 +65,12 @@ declare module 'backend.ai-client' {
     constructor(client: Client);
 
     list(fields: any, status: any, accessKey: string): any;
+  }
+
+  export class Image {
+    constructor(client: Client);
+
+    list(fields: any): any;
   }
   
   export type backend = {

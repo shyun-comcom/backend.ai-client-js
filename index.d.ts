@@ -65,6 +65,7 @@ declare module 'backend.ai-client' {
     constructor(client: Client);
 
     list(fields: any, status: any, accessKey: string): any;
+    get(sessId: string, domainName: string, accessKey: string): any;
   }
 
   export class Image {

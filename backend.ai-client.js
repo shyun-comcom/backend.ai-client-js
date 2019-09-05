@@ -1356,6 +1356,25 @@ class ComputeSession {
     }
     return this.client.gql(q, v);
   }
+
+  get(sessId, domainName = null, accessKey = null) {
+    let q, v;
+
+    if (this.client.is_admin === true) {
+      if (!accessKey) accessKey = null;
+      if (!domainName) domainName = null;
+      q = `query($sid:String, $dn:String, $ak:String) {` +
+        `  compute_session(sess_id:$sid, domain_name:$dn, access_key:$ak) { ${fields.join(" ")} }` +
+        '}';
+      v = {'sid': sessId, 'dn': domain_name, 'ak': accessKey};
+    } else {
+      q = `query($sid:String) {` +
+        `  compute_sessions(sess_id:$sid) { ${fields.join(" ")} }` +
+        '}';
+      v = {'sid': sessId};
+    }
+    return this.client.gql(q, v);
+  }
 }
 
 class Resources {

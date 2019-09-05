@@ -1359,6 +1359,8 @@ class ComputeSession {
 
   get(sessId, domainName = null, accessKey = null) {
     let q, v;
+    let fields = ["sess_id", "lang", "created_at", "terminated_at", "status", 
+          "occupied_slots", "cpu_used", "io_read_bytes", "io_write_bytes"];
 
     if (this.client.is_admin === true) {
       if (!accessKey) accessKey = null;
@@ -1369,7 +1371,7 @@ class ComputeSession {
       v = {'sid': sessId, 'dn': domain_name, 'ak': accessKey};
     } else {
       q = `query($sid:String) {` +
-        `  compute_sessions(sess_id:$sid) { ${fields.join(" ")} }` +
+        `  compute_session(sess_id:$sid) { ${fields.join(" ")} }` +
         '}';
       v = {'sid': sessId};
     }

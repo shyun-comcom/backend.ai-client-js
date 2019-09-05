@@ -1359,8 +1359,8 @@ class ComputeSession {
 
   get(sessId, domainName = null, accessKey = null) {
     let q, v;
-    let fields = ["sess_id", "lang", "created_at", "terminated_at", "status", 
-          "occupied_slots", "cpu_used", "io_read_bytes", "io_write_bytes"];
+    let fields = ["sess_id", "image", "service_ports", "occupied_slots", 
+          "occupied_shares", "created_at", "terminated_at", "live_stat"];
 
     if (this.client.is_admin === true) {
       if (!accessKey) accessKey = null;

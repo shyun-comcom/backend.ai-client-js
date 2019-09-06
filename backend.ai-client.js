@@ -1357,10 +1357,9 @@ class ComputeSession {
     return this.client.gql(q, v);
   }
 
-  get(sessId, domainName = null, accessKey = null) {
+  get(fields = ["sess_id", "image", "service_ports", "occupied_slots", "occupied_shares", "created_at", "terminated_at", "live_stat"],
+      sessId, domainName = null, accessKey = null) {
     let q, v;
-    let fields = ["sess_id", "image", "service_ports", "occupied_slots", 
-          "occupied_shares", "created_at", "terminated_at", "live_stat"];
 
     if (this.client.is_admin === true) {
       if (!accessKey) accessKey = null;
